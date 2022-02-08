@@ -9,6 +9,15 @@ const app = express();
 
 app.use(cors());
 
+
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "./", "build")));
+app.use(express.static("public"));
+app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, "./", "build", "index.html"));
+  });
+
 app.get('/', (req, res) => {
     res.json('default path response check');
 })
@@ -38,3 +47,6 @@ app.get('/results', (req, res) => {
 })
 
 app.listen(PORT, () => console.log(`server is running on port ${PORT} and listening`));
+
+
+
