@@ -12,11 +12,16 @@ app.use(cors());
 
 const path = require("path");
 
+
+/* 
+// preparation for 'build' deployment
 app.use(express.static(path.join(__dirname, "./", "build")));
 app.use(express.static("public"));
 app.use((req, res, next) => {
     res.sendFile(path.join(__dirname, "./", "build", "index.html"));
-  });
+});
+
+*/
 
 app.get('/', (req, res) => {
     res.json('default path response check');
